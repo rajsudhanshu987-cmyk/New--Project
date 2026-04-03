@@ -26,6 +26,35 @@
         body {
             background: #f8f9fa;
         }
+        .layout-wrapper {
+            display: flex;
+           
+        }
+        .sidebar {
+          width: var(--sidebar-width);
+          min-height: 100vh;
+          background: var(--sidebar-bg);
+          border-right: 1px solid var(--sidebar-border-color);
+        }
+        .sidebar .nav-link {
+            color: #344767;
+            font-weight: bold;
+            padding: 1rem 1.2rem;
+            border-radius: 0.4rem;
+           
+        }
+        .sidebar .nav-link i {
+          color: var(--primary-blue);
+        }
+        .sidebar .nav-link.active {
+            background: rgba(13, 110, 253, 0.1);
+            color: var(--primary-blue);
+        }
+        .sidebar .nav-link:hover {
+            background: rgba(0, 102, 255, 0.1);
+            color: var(--primary-blue);
+        }
+         
     </style>
 
 
