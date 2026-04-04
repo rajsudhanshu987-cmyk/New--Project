@@ -54,7 +54,25 @@
             background: rgba(0, 102, 255, 0.1);
             color: var(--primary-blue);
         }
-         
+         .main-content {
+            flex-grow: 1;
+            padding-left: var(--sidebar-width);
+            padding-right: 1.6rem;
+         }
+         .topbar {
+          background: #fff;
+          border-bottom: 1px solid var(--sidebar-border-color);
+          padding: 1rem 1.5rem;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+         }
+          .avatar-sm {
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              object-fit: cover;
+          }
     </style>
 
 
