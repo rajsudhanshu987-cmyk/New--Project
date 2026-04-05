@@ -92,6 +92,13 @@
     .kpi-card {
       border-radius: 13px;
       box-shadow: 0 7px 19px rgba(15,23 , 35, 0);
+      box-sizing:content-box;
+
+    }
+   
+    
+    .kpi-card:hover {
+      box-shadow: 0 7px 19px rgba(15, 23, 35, 0.1);
 
     }
   </style>
@@ -183,13 +190,14 @@
     </header>
 
    <!-- main dashboard -->
+    <!-- kpi row -->
     <main class="flex-grow-1 p-4" style="min-height: 100vh">
-<!-- kpi card -->
+
       <div class="row g-4 ">
         <div class="col-md-3">
           <div class="card p-3 kpi-card">
-            <h3>Total Resources</h3>
-            <h3 class="fw-bold mb-0">128</h3>
+            <h6>Total Resources</h6>
+            <h4 class="fw-bold mb-0">128</h4>
             <small class="text-success">
               <i class="fa-solid fa-arrow-up me-1"></i> 6% since last month
             </small>
@@ -198,8 +206,8 @@
 
          <div class="col-md-3">
           <div class="card p-3 kpi-card">
-            <h3>Project Active</h3>
-            <h3 class="fw-bold mb-0">24</h3>
+            <h6>Project Active</h6>
+            <h4 class="fw-bold mb-0">24</h4>
             <small class="text-success">
               <i class="fa-solid fa-arrow-up me-1"></i> 5 new started this month
             </small>
@@ -208,8 +216,8 @@
 
          <div class="col-md-3">
           <div class="card p-3 kpi-card">
-            <h3>Average Utilization</h3>
-            <h3 class="fw-bold mb-0">82%</h3>
+            <h6>Average Utilization</h6>
+            <h4 class="fw-bold mb-0">82%</h4>
             <small class="text-success">
               <i class="fa-solid fa-arrow-up me-1"></i> Stable trend
             </small>
@@ -218,20 +226,50 @@
 
          <div class="col-md-3">
           <div class="card p-3 kpi-card">
-            <h3>Available Resources</h3>
-            <h3 class="fw-bold mb-0">128</h3>
+            <h6>Available Resources</h6>
+            <h4 class="fw-bold mb-0">128</h4>
             <small class="text-success">
               <i class="fa-solid fa-arrow-up me-1"></i> need allocation for 5 projects
             </small>
           </div>
         </div>
-      </div>
-       
+      </div>  
+<!-- kipi card end -->
+
+<!-- chart+table -->
+ <div class="g-4" my="4">
+  <div class="col=lg-7">
+    <div class="card p-3 h-100">
+      <h6>Utilization - Last 6 Months</h6>
+      <canvas id="utilchart" height="140"></canvas>
+    </div>
+  </div>
+
+  <div class="col -lg-5">
+    <div class="card p-3 h-100">
+      <h6>Top Allocations</h6>
+      <table class="table table-borderless align-middle mb-0">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Allocations</th>
+            <th>Util</th>
+          </tr>
+        </thead>
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>28 members</td>
+                <td></td>
+              </tr>
+            </tbody>
+        
+      </table>
+    </div>
+  </div>
+ </div>
     </main>
   </div>
 </div>
-
-
-
 </body>
 </head>
