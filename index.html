@@ -92,7 +92,7 @@
 
     .kpi-card {
       border-radius: 13px;
-      box-shadow: 0 7px 19px rgba(15,23 , 35, 0);
+      box-shadow: 0 7px 19px rgba(15,23, 35, 0);
       box-sizing:content-box;
 
     }
@@ -107,7 +107,7 @@
   margin: 0 auto;      /* centers content */
 }
   </style>
-<html>
+
 
 <body>
 
@@ -246,7 +246,8 @@
   <div class="col-lg-7">
     <div class="card p-3 h-100">
       <h6>Utilization - Last 6 Months</h6>
-      <canvas id="utilchart" height="140"></canvas>
+      <canvas id="utilchart" height="140px"></canvas>
+      <!-- <script>new Chart(document.getElementById('utilchart'), {});</script>  -->
     </div>
   </div>
 
@@ -279,9 +280,9 @@
                 </td>
                
               </tr>
-            </tbody>
+           
 
-             <tbody>
+            
               <tr>
                 <td>Project Manager</td>
                 <td>28 members</td>
@@ -477,11 +478,11 @@
         data-bs-dismiss="modal">Cancel
       </button>
       <button
-      typt="button"
+      type="button"
       class="btn btn-primary"
       id="saveProjectBtn"
       >
-      <i class="fa=solid fa-save me-1"></i>Save Project
+      <i class="fa-solid fa-save me-1"></i>Save Project
     </button>
       </div>
     </div>
@@ -497,4 +498,4 @@
 <!-- bootstrap bundle -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</head>
+</html>
