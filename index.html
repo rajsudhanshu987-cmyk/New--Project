@@ -436,9 +436,53 @@
     placeholder="Team Name (e.g., Backend)"
     required/>
   </div>
-          </div>
-        
+  <div class="col-md-6">
+    <label class="form-label">Progress (%)</label>
+    <input
+    type="number"
+    class="form-control"
+    id="projectProgress"
+    placeholder="e.g. 65"
+    min="0"
+    max="100"
+    required/>
+  </div>
+
+  <div class="col-md-6">
+    <label class="form-label">Due Date</label>
+    <input 
+    type="month"
+    class="form-control"
+    id="projectDue"
+    required/>
+  </div>
+
+  <div class="col-12">
+    <label class="form-label">Description</label>
+    <textarea
+    class="form-control"
+    id="projectDescription"
+    rows="3"
+    placeholder="Brief description..."
+    ></textarea>
+             </div>
+              </div>
         </form>
+      </div>
+
+      <div class="modal-footer">
+        <button
+        type="button"
+        class="btn btn-secondary"
+        data-bs-dismiss="modal">Cancel
+      </button>
+      <button
+      typt="button"
+      class="btn btn-primary"
+      id="saveProjectBtn"
+      >
+      <i class="fa=solid fa-save me-1"></i>Save Project
+    </button>
       </div>
     </div>
    </div>
