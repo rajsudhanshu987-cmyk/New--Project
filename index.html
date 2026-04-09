@@ -529,27 +529,32 @@
 )
 
 //chart
-const ctx= document.getElementById("utilChart");
+const ctx = document.getElementById("utilchart").getContext("2d");
 
-new Chart(ctx,{
-  type:"line",
-  data:{
-    labels:["May","June","July","Aug","Sept","Oct"],
-    datasets:[
-      {
-        label:"Overall Utilization",
-        data:[65,70,75,80,78,85],
-       
-        tension:0.4,
-        fill:true,
-        backgroundColor:"rgba(13,110,253,0.07)",
-        borderColor:"rgba(13,110,253,0.8)",
-        pointRadius:4
-      }
-    ]
+new Chart(ctx, {
+  type: "line",
+  data: {
+    labels: ["May","June","July","Aug","Sept","Oct"],
+    datasets: [{
+      label: "Overall Utilization",
+      data: [65,70,75,80,78,85],
+      tension: 0.4,
+      fill: true,
+      backgroundColor: "rgba(13,110,253,0.07)",
+      borderColor: "rgba(13,110,253,0.8)",
+      pointRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { position: "top" }
+    },
+    scales: {
+      y: { beginAtZero: false, min: 40, max: 100 }
+    }
   }
- 
-})
+});
  </script>
 </body>
 </html>
