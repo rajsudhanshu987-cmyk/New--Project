@@ -555,6 +555,29 @@ new Chart(ctx, {
     }
   }
 });
+
+//report chart
+const barCtx = document.getElementById("reportBar");
+new Chart(barCtx,{
+  type: "bar",
+  data: {
+    labels: ["Payments", "Analytics", "Infra", "AI", "CRM"],
+    datasets: [
+      {
+        label: "Project Efficiency (%)",
+        data: [82,76, 88, 91, 73],
+        backgroundColor: "rgba(13, 110, 253, 0.6)",
+        borderRadius: 6,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { beginAtZero: true, max: 100},
+    },
+  },
+});
  </script>
 </body>
 </html>
