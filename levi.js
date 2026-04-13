@@ -23,8 +23,29 @@ Team: <strong>${team}</strong>
 </p>
 <div class= "progress mb-2" style= "height: 10px">
 <div class= "progress-bar bg-primary" style= "width: ${progress}%"></div>
-</div>`
+</div>
+<small class="text-muted">${progress}% complete</small>
+<p class= "mt-2 small text-muted">${desc}</p>
+</div>
+<div class= "card-footer bg-white border-0 d-flex justify-content-between">
+<span><i class= "fa-regular fa-calendar"></i> Due: ${due}</span>
+<a herf= "#" class="btn btn-sm btn-outline-primary">View</a>
+</div>
+</div>
+</div>
+`;
+
+document
+.querySelector("#projects .row.g-4")
+.insertAdjacentHTML("beforeend", projectHTML);
+
+//CLOSE MODAL AND RESET FORM
+const modal = bootstrap.Modal.getInstance (
+    document.getElementById("addProjectModal")
+);
+modal.hide();
+document.getElementById("addProjectForm").requestFullscreen();
 }
-)
+);
 
 
