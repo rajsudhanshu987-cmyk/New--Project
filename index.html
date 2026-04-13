@@ -443,6 +443,12 @@
     placeholder="Team Name (e.g., Backend)"
     required/>
   </div>
+
+  <div class="col-md-6">
+      <label class="form-label">Team</label>
+      <input type="text" class="form-control" id="projectTeam" required />
+    </div>
+    
   <div class="col-md-6">
     <label class="form-label">Progress (%)</label>
     <input
@@ -537,7 +543,6 @@
 //chart
 const ctx = document.getElementById("utilchart").getContext("2d");
 
-
 new Chart(ctx, {
   type: "line",
   data: {
@@ -610,6 +615,6 @@ new Chart(pieCtx, {
 });
  </script>
 
- <script src="./levi.js"></script>
+ <script src="levi.js"></script>
 </body>
 </html>
