@@ -14,6 +14,7 @@ document
     }
 
     const projectHTML = `
+    <div class="progress-bar ${progressColor}" style="width: ${progress}%"></div>
 <div class="col-md-6 col-lg-4">
   <div class="card border-0 shadow-sm h-100">
     <div class="card-body">
@@ -48,3 +49,8 @@ document
 
     document.getElementById("addProjectsForm").reset();
 });
+
+
+let progressColor = "bg-danger";
+if (progress >= 70) progressColor = "bg-success";
+else if (progress >= 40) progressColor = "bg-warning";
