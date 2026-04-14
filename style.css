@@ -159,4 +159,39 @@ body.dark-mode #themeToggle {
   transform: translateX(0);
 }
 
-  
+  @media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: 0.3s;
+    z-index: 1050;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px;
+  }
+
+  .main-content {
+    padding: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar .gap-3 {
+    gap: 10px !important;
+  }
+}
