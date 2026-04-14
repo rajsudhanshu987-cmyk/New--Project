@@ -23,6 +23,41 @@
       --sidebar-border-color: #e5e7eb;
       --primary-blue: #0d6efd;
     }
+    body.dark-mode {
+  background: #121212 !important;
+  color: #e4e6eb !important;
+}
+
+/* cards */
+body.dark-mode .card {
+  background: #1e1e2f !important;
+  color: #e4e6eb !important;
+}
+
+/* topbar */
+body.dark-mode .topbar {
+  background: #1e1e2f !important;
+  border-color: #2c2c3e !important;
+}
+
+/* sidebar */
+body.dark-mode .sidebar {
+  background: #1e1e2f !important;
+  border-color: #2c2c3e !important;
+}
+
+/* inputs */
+body.dark-mode input,
+body.dark-mode .form-control {
+  background: #2c2c3e !important;
+  color: white !important;
+  border-color: #444 !important;
+}
+
+/* table */
+body.dark-mode table {
+  color: white !important;
+}
 
     body {
       background: #f8f9fa;
@@ -157,6 +192,9 @@
 
       <!-- Right -->
       <div class="d-flex align-items-center gap-3">
+        <button id="themeToggle" class="btn btn-outline-dark">
+  <i class="fa-solid fa-moon"></i>
+</button>
 
         <!-- Search -->
         <div class="input-group" style="width: 280px;">
@@ -181,6 +219,8 @@
 
             <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
                  class="avatar-sm me-2"/>
+
+                 
 
             <div class="d-none d-sm-block">
               <div class="fw-bold">Eren</div>
