@@ -55,36 +55,3 @@ let progressColor = "bg-danger";
 if (progress >= 70) progressColor = "bg-success";
 else if (progress >= 40) progressColor = "bg-warning";
 
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleBtn = document.getElementById("themeToggle");
-
-  if (!toggleBtn) {
-    console.error("Theme toggle button not found");
-    return;
-  }
-
-  // Apply saved theme on load
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-  } else {
-    toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-  }
-
-  // Toggle logic
-  toggleBtn.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-
-    const isDark = document.body.classList.contains("dark-mode");
-
-    if (isDark) {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    } else {
-      localStorage.setItem("theme", "light");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    }
-  });
-});
