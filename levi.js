@@ -1,4 +1,4 @@
- // Sidebar toggle for mobile
+ 
       document
         .getElementById("toggleSidebar")
         .addEventListener("click", function () {
