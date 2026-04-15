@@ -1,561 +1,447 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manager Tool</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-<link rel="stylesheet" href="./style.css">
-  
-
-<body>
-
-<div class="layout-wrapper">
-
-  <!-- Sidebar -->
-  <aside class="sidebar p-3 d-flex flex-column flex-shrink-0">
-
-    <div class="d-flex align-items-center mb-4 ps-2">
-      <i class="fa-solid fa-robot fa-2x me-2 text-primary"></i>
-      <div>
-        <h6 class="mb-0 fw-bold">Resource Manager</h6>
-        <small class="text-muted">Management Suite</small>
-      </div>
-    </div>
-
-    <nav class="nav flex-column mb-auto">
-      <a class="nav-link active" href="#"><i class="fa-solid fa-gauge-high me-2"></i> Dashboard</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-diagram-project me-2"></i> Allocations</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-users me-2"></i> Teams</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-briefcase me-2"></i> Projects</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-file-lines me-2"></i> Reports</a>
-      <a class="nav-link" href="#"><i class="fa-solid fa-envelope me-2"></i> Contacts</a>
-    </nav>
-
-  </aside>
-
-  <!-- Main Content -->
-  <div class="main-content">
-
-    <!-- Topbar -->
-    <header class="topbar">
-
-      <!-- Left -->
-      <div class="d-flex align-items-center gap-3">
-        <button id="toggleSidebar" class="btn btn-light d-lg-none">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-        <h4 class="mb-0">Dashboard</h4>
-      </div>
-
-      <!-- Right -->
-      <div class="d-flex align-items-center gap-3">
-        <button id="themeToggle" class="btn ">
-  <i class="fa-solid fa-moon"></i>
-</button>
-
-        <!-- Search -->
-      <div class="input-group d-none d-md-flex" style="max-width: 250px;"></div>
-          <span class="input-group-text">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </span>
-          <input class="form-control" placeholder="Search..." />
+    <link rel="stylesheet" href="./style.css">
+    
+  </head>
+  <body>
+    <div class="layout-wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar p-3 d-flex flex-column flex-shrink-0">
+        <div class="d-flex align-items-center mb-4 ps-2">
+          <i class="fa-solid fa-robot fa-2x me-2 text-primary"></i>
+          <div>
+            <h6 class="mb-0 fw-bold">Resource Manager</h6>
+            <small class="text-muted">Management Suite</small>
+          </div>
         </div>
 
-        <!-- Notification -->
-        <button class="btn btn-outline-secondary position-relative">
-          <i class="fa-regular fa-bell"></i>
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            3
-          </span>
-        </button>
+        <nav class="nav flex-column mb-auto">
+          <a class="nav-link active" href="#"
+            ><i class="fa-solid fa-gauge-high me-3"></i>Dashboard</a
+          >
+          <a class="nav-link" href="#allocations"
+            ><i class="fa-solid fa-diagram-project me-3"></i>Allocations</a
+          >
+          <a class="nav-link" href="#teams"
+            ><i class="fa-solid fa-users me-3"></i>Teams</a
+          >
+          <a class="nav-link" href="#projects"
+            ><i class="fa-solid fa-briefcase me-3"></i>Projects</a
+          >
+          <a class="nav-link" href="#reports"
+            ><i class="fa-solid fa-file-lines me-3"></i>Reports</a
+          >
+          <a class="nav-link" href="#contact"
+            ><i class="fa-solid fa-envelope me-3"></i>Contact</a
+          >
+        </nav>
+      </aside>
 
-        <!-- Profile Dropdown -->
-        <div class="dropdown">
-          <a href="#" class="d-flex align-items-center text-decoration-none"
-             data-bs-toggle="dropdown">
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <header
+          class="topbar d-flex align-items-center justify-content-between"
+        >
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light d-lg-none" id="toggleSidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <h4 class="mb-0 d-none d-md-block">Dashboard</h4>
+          </div>
 
-            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
-                 class="avatar-sm me-2"/>
-
-                 
-
-            <div class="d-none d-sm-block">
-              <div class="fw-bold">Eren</div>
-              <small class="text-muted">Lead Developer</small>
+          <div class="d-flex align-items-center gap-3">
+            <div class="input-group" style="min-width: 300px">
+              <span class="input-group-text"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+              <input
+                class="form-control"
+                placeholder="Search project, team or resource..."
+              />
             </div>
-          </a>
-
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-    </header>
-
-   <!-- main dashboard -->
-    <!-- kpi row -->
-    <main class="flex-grow-1 p-4" style="min-height: 100vh">
- <div class="dashboard-container">
-      <div class="row g-4 ">
-       <div class="col-12 col-sm-6 col-md-3">
-          <div class="card p-3 kpi-card">
-            <h6>Total Resources</h6>
-            <h4 class="fw-bold mb-0">128</h4>
-            <small class="text-success">
-              <i class="fa-solid fa-arrow-up me-1"></i> 6% since last month
-            </small>
-          </div>
-        </div>
-
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="card p-3 kpi-card">
-            <h6>Project Active</h6>
-            <h4 class="fw-bold mb-0">24</h4>
-            <small class="text-success">
-              <i class="fa-solid fa-arrow-up me-1"></i> 5 new started this month
-            </small>
-          </div>
-        </div>
-
-         <div class="col-12 col-sm-6 col-md-3">
-          <div class="card p-3 kpi-card">
-            <h6>Average Utilization</h6>
-            <h4 class="fw-bold mb-0">82%</h4>
-            <small class="text-success">
-              <i class="fa-solid fa-arrow-up me-1"></i> Stable trend
-            </small>
-          </div>
-        </div>
-
-         <d<div class="col-12 col-sm-6 col-md-3">
-          <div class="card p-3 kpi-card">
-            <h6>Available Resources</h6>
-            <h4 class="fw-bold mb-0">128</h4>
-            <small class="text-success">
-              <i class="fa-solid fa-arrow-up me-1"></i> need allocation for 5 projects
-            </small>
-          </div>
-        </div>
-      </div>  
-<!-- kipi card end -->
-
-<!-- chart+table -->
- <div class="row g-4 my-4">
-  <div class="col-lg-7">
-    <div class="card p-3 h-100">
-      <h6>Utilization - Last 6 Months</h6>
-      <canvas id="utilchart" height="140"></canvas>
-      <!-- <script>new Chart(document.getElementById('utilchart'), {});</script>  -->
-    </div>
-  </div>
-
-  <div class="col-lg-5">
-    <div class="card p-3 h-100">
-      <h6>Top Allocations</h6>
-      <div class="table-responsive">
-    <table class="table table-borderless align-middle mb-0">
-      
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th>Allocations</th>
-            <th>Util</th>
-          </tr>
-        </thead>
-            <tbody>
-              <tr>
-                <td>Data Science</td>
-                <td>14 members</td>
-                <td>
-                <div class="d-flex align-items-center g-2">
-                   <div style="flex: 1">
-                    <div class="progress" style="height: 8px">
-                      <div
-                      class="progress-bar bg-info"
-                      style="width: 62%"></div>
-                    </div>
-                   </div>
-                   <small class="text-muted">62%</small>
+            <button class="btn btn-outline-secondary position-relative">
+              <i class="fa-regular fa-bell"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                3
+              </span>
+            </button>
+            <div class="dropdown">
+              <a
+                href="#"
+                class="d-flex align-items-center text-decoration-none"
+                data-bs-toggle="dropdown"
+              >
+                <img
+                  src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg"
+                  class="avatar-sm me-2"
+                />
+                <div class="d-none d-sm-block">
+                  <div class="fw-bold">Vikas</div>
+                  <small class="text-muted">Lead Engineer</small>
                 </div>
-                </td>
-               
-              </tr>
-           
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <!-- Main Dashboard Content -->
+        <main class="flex-grow-1 p-4" style="min-height: 100vh">
+          <!-- KPI Row -->
+          <div class="row g-4">
+            <div class="col-md-3">
+              <div class="card p-3 kpi-card">
+                <h6>Total Resources</h6>
+                <h3 class="fw-bold mb-0">128</h3>
+                <small class="text-success"
+                  ><i class="fa-solid fa-arrow-up"></i> 6% this month</small
+                >
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3 kpi-card">
+                <h6>Projects Active</h6>
+                <h3 class="fw-bold mb-0">24</h3>
+                <small class="text-primary">4 new started</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3 kpi-card">
+                <h6>Average Utilization</h6>
+                <h3 class="fw-bold mb-0">82%</h3>
+                <small class="text-warning">Stable trend</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card p-3 kpi-card">
+                <h6>Available Resources</h6>
+                <h3 class="fw-bold mb-0">14</h3>
+                <small class="text-danger">Needs allocation</small>
+              </div>
+            </div>
+          </div>
 
-            
-              <tr>
-                <td>Project Manager</td>
-                <td>28 members</td>
-                <td>
-                <div class="d-flex align-items-center g-2">
-                   <div style="flex: 1">
-                    <div class="progress" style="height: 8px">
-                      <div
-                      class="progress-bar bg-info"
-                      style="width: 78%"></div>
+          <!-- Chart + Table -->
+          <div class="row g-4 my-4">
+            <div class="col-lg-7">
+              <div class="card p-3 h-100">
+                <h6>Utilization — Last 6 Months</h6>
+                <canvas id="utilChart" height="140"></canvas>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="card p-3 h-100">
+                <h6>Top Allocations</h6>
+                <table class="table table-borderless align-middle mb-0">
+                  <thead>
+                    <tr>
+                      <th>Team</th>
+                      <th>Allocation</th>
+                      <th>Util.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Platform</td>
+                      <td>28 members</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div style="flex: 1">
+                            <div class="progress" style="height: 8px">
+                              <div
+                                class="progress-bar"
+                                style="width: 78%"
+                              ></div>
+                            </div>
+                          </div>
+                          <small class="text-muted">78%</small>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Data Science</td>
+                      <td>14 members</td>
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <div style="flex: 1">
+                            <div class="progress" style="height: 8px">
+                              <div
+                                class="progress-bar bg-info"
+                                style="width: 62%"
+                              ></div>
+                            </div>
+                          </div>
+                          <small class="text-muted">62%</small>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ongoing Projects -->
+          <section id="projects" class="mb-5">
+            <div class="card p-4">
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <h5 class="mb-0">Ongoing Projects</h5>
+                <button
+                  class="btn btn-sm btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addProjectModal"
+                >
+                  <i class="fa-solid fa-plus me-1"></i> Add New
+                </button>
+              </div>
+
+              <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="fw-bold">Payments Revamp</h6>
+                      <p class="text-muted mb-2">
+                        Team: <strong>Backend</strong>
+                      </p>
+                      <div class="progress mb-2" style="height: 10px">
+                        <div
+                          class="progress-bar bg-primary"
+                          style="width: 80%"
+                        ></div>
+                      </div>
+                      <small class="text-muted">80% complete</small>
                     </div>
-                   </div>
-                   <small class="text-muted">78%</small>
+                    <div
+                      class="card-footer bg-white border-0 d-flex justify-content-between"
+                    >
+                      <span
+                        ><i class="fa-regular fa-calendar"></i> Due: Dec
+                        2025</span
+                      >
+                      <a href="#" class="btn btn-sm btn-outline-primary"
+                        >View</a
+                      >
+                    </div>
+                  </div>
                 </div>
-                </td>
-               
-              </tr>
-            </tbody>
-        
-        
-      </table>
-      </div>
-    </div>
-  </div>
- </div>
- </div>
 
- <!-- ongoing project sectoion -->
-  <section id="projects" class="mb-5">
-    <div class="card p-4">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="mb-0">Ongoing Projects</h5>
-        <button 
-        class="btn btn-sm btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#addProjectModal">
-        <i class="fa-solid fa-plus me-1"></i>Add New
-      </button>
-      </div>
-      <div class="row g-4">
-        <!-- project 1 -->
-         <div class="col-lg-4 col-md-6">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h6 class="fw-bold">Payment Gateway Optimization</h6>
-              <p class="text-muted mb-2">
-                Team: <strong>Backend</strong>
-              </p>
-              <div class="progress mb-2" style="height: 10px">
-                <div
-                class="progress-bar bg-primary"
-                style="width: 80%">
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="fw-bold">AI Insights Dashboard</h6>
+                      <p class="text-muted mb-2">
+                        Team: <strong>Data Science</strong>
+                      </p>
+                      <div class="progress mb-2" style="height: 10px">
+                        <div
+                          class="progress-bar bg-success"
+                          style="width: 65%"
+                        ></div>
+                      </div>
+                      <small class="text-muted">65% complete</small>
+                    </div>
+                    <div
+                      class="card-footer bg-white border-0 d-flex justify-content-between"
+                    >
+                      <span
+                        ><i class="fa-regular fa-calendar"></i> Due: Jan
+                        2026</span
+                      >
+                      <a href="#" class="btn btn-sm btn-outline-primary"
+                        >View</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4">
+                  <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                      <h6 class="fw-bold">Infrastructure Upgrade</h6>
+                      <p class="text-muted mb-2">
+                        Team: <strong>DevOps</strong>
+                      </p>
+                      <div class="progress mb-2" style="height: 10px">
+                        <div
+                          class="progress-bar bg-warning"
+                          style="width: 50%"
+                        ></div>
+                      </div>
+                      <small class="text-muted">50% complete</small>
+                    </div>
+                    <div
+                      class="card-footer bg-white border-0 d-flex justify-content-between"
+                    >
+                      <span
+                        ><i class="fa-regular fa-calendar"></i> Due: Feb
+                        2026</span
+                      >
+                      <a href="#" class="btn btn-sm btn-outline-primary"
+                        >View</a
+                      >
+                    </div>
+                  </div>
+                </div>
               </div>
-              </div>
-              <small class="text-muted">80% complete</small>
             </div>
-            <div
-            class="card-footer bg-white border-0 d-flex justify-content-between">
-            <span
-            ><i class="fa-regular fa-calendar"></i> Due: Dec
-             2025</span>
-             <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-          </div>
-          </div>
-        </div>
+          </section>
 
-        <!-- project-2 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h6 class="fw-bold">Fraud Detection System Upgrade</h6>
-              <p class="text-muted mb-2">
-                Team: <strong>Backend</strong>
-              </p>
-              <div class="progress mb-2" style="height: 10px">
-                <div 
-                class="progress-bar bg-primary"
-                style="width: 80%;">
+          <!-- Add Project Modal -->
+          <div
+            class="modal fade"
+            id="addProjectModal"
+            tabindex="-1"
+            aria-labelledby="addProjectModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title fw-bold" id="addProjectModalLabel">
+                    Add New Project
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+
+                <div class="modal-body">
+                  <form id="addProjectForm">
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label class="form-label">Project Name</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="projectName"
+                          placeholder="Enter project name"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Team</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="projectTeam"
+                          placeholder="Team name (e.g., Backend)"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Progress (%)</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="projectProgress"
+                          placeholder="e.g. 65"
+                          min="0"
+                          max="100"
+                          required
+                        />
+                      </div>
+                      <div class="col-md-6">
+                        <label class="form-label">Due Date</label>
+                        <input
+                          type="month"
+                          class="form-control"
+                          id="projectDue"
+                          required
+                        />
+                      </div>
+                      <div class="col-12">
+                        <label class="form-label">Description</label>
+                        <textarea
+                          class="form-control"
+                          id="projectDescription"
+                          rows="3"
+                          placeholder="Brief description..."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="saveProjectBtn"
+                  >
+                    <i class="fa-solid fa-save me-1"></i> Save Project
+                  </button>
+                </div>
               </div>
-              </div>
-              <small class="text-muted">80% complete</small>
             </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-between"
-            >
-            <span><i class="fa-regular fa-calendar"></i> Due: Dec
-            2025</span>
-            <a href="#" class="btn btn-sm btn-outline-primary"
-            >View</a>
           </div>
-          </div>
-        </div>
 
-
-        <!-- project-3 -->
-          <div class="col-md-6 col-lg-4">
-          <div class="card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h6 class="fw-bold">User Authentication Overhaul</h6>
-              <p class="text-muted mb-2">
-                Team: <strong>Backend</strong>
-              </p>
-              <div class="progress mb-2" style="height: 10px">
-                <div 
-                class="progress-bar bg-primary"
-                style="width: 80%;">
+          <!-- Reports -->
+          <section id="reports" class="my-5">
+            <div class="card p-4">
+              <h5 class="mb-3">Reports & Analytics</h5>
+              <div class="row g-4">
+                <div class="col-md-7">
+                  <div class="card p-3 h-100">
+                    <h6>Project Performance Overview</h6>
+                    <canvas id="reportBar"></canvas>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="card p-3 h-100">
+                    <h6>Resource Distribution</h6>
+                    <canvas id="reportPie"></canvas>
+                  </div>
+                </div>
               </div>
-              </div>
-              <small class="text-muted">80% complete</small>
             </div>
-            <div class="card-footer bg-white border-0 d-flex justify-content-between"
-            >
-            <span><i class="fa-regular fa-calendar"></i> Due: Dec
-            2025</span>
-            <a href="#" class="btn btn-sm btn-outline-primary"
-            >View</a>
-          </div>
-          </div>
-        </div>
+          </section>
+        </main>
       </div>
     </div>
-  </section>
 
-  <!-- add project modal -->
-   <div
-   class="modal fade"
-   id="addProjectModal"
-   tabindex="-1"
-   aria-labelledby="addProjectModalLabel"
-   aria-hidden="true"
-   >
-   <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fw-bold" id="addProjectModalLabel">
-          Add New Project</h5>
-          <button 
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close">
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <form id="addProjectsForm">
-          <div class="row g-3">
-  <div class="col-md-6">
-    <label class="form-label">Project Name</label>
-    <input
-    type="text"
-    class="form-control"
-    id="projectName"
-    placeholder="Team Name (e.g., Backend)"
-    required/>
-  </div>
-
-  <div class="col-md-6">
-      <label class="form-label">Team</label>
-      <input type="text" class="form-control" id="projectTeam" required />
-    </div>
-
-  <div class="col-md-6">
-    <label class="form-label">Progress (%)</label>
-    <input
-    type="number"
-    class="form-control"
-    id="projectProgress"
-    placeholder="e.g. 65"
-    min="0"
-    max="100"
-    required/>
-  </div>
-
-  <div class="col-md-6">
-    <label class="form-label">Due Date</label>
-    <input 
-    type="month"
-    class="form-control"
-    id="projectDue"
-    required/>
-  </div>
-
-  <div class="col-12">
-    <label class="form-label">Description</label>
-    <textarea
-    class="form-control"
-    id="projectDescription"
-    rows="3"
-    placeholder="Brief description..."
-    ></textarea>
-             </div>
-              </div>
-        </form>
-      </div>
-
-      <div class="modal-footer">
-        <button
-        type="button"
-        class="btn btn-secondary"
-        data-bs-dismiss="modal">Cancel
-      </button>
-      <button
-      type="button"
-      class="btn btn-primary"
-      id="saveProjectBtn"
-      >
-      <i class="fa-solid fa-save me-1"></i>Save Project
-    </button>
-      </div>
-    </div>
-   </div>
-  </div>
-
-  <!-- report section -->
-   <section id="reports" class="my-5">
-    <div class="card p-4">
-      <h5 class="mb-4">Reports and analytics</h5>
-      <div class="row g-4">
-        <div class="col-md-7">
-          <div class="card p-3 h-100">
-            <h6>Project Performance Overview</h6>
-            <canvas id="reportBar"></canvas>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div class="card p-3 h-100">
-            <h6>Resource Distribution</h6>
-            <canvas id="reportPie"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-   </section>
-    </main>
-  </div>
-</div>
-
-
-
-
-<!-- bootstrap bundle -->
- <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
-
- <script>
-  //sidebar toggle for mobile
-
-  document.getElementById("toggleSidebar").addEventListener("click",function(){
-    document.querySelector(".sidebar").classList.toggle("show")
-  }
-)
-
-//chart
-const ctx = document.getElementById("utilchart").getContext("2d");
-
-new Chart(ctx, {
-  type: "line",
-  data: {
-    labels: ["May","June","July","Aug","Sept","Oct"],
-    datasets: [{
-      label: "Overall Utilization",
-      data: [65,70,75,80,78,85],
-      tension: 0.4,
-      fill: true,
-      backgroundColor: "rgba(13,110,253,0.07)",
-      borderColor: "rgba(13,110,253,0.8)",
-      pointRadius: 4
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { position: "top" }
-    },
-    scales: {
-      y: { beginAtZero: false, min: 40, max: 100 }
-    }
-  }
-});
-
-//report chart
-const barCtx = document.getElementById("reportBar").getContext("2d");
-new Chart(barCtx,{
-  type: "bar",
-  data: {
-    labels: ["Payments", "Analytics", "Infra", "AI", "CRM"],
-    datasets: [
-      {
-        label: "Project Efficiency (%)",
-        data: [82,76, 88, 91, 73],
-        backgroundColor: "rgba(13, 110, 253, 0.6)",
-        borderRadius: 6,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { beginAtZero: true, max: 100},
-    },
-  },
-});
-
-const pieCtx = document.getElementById("reportPie");
-new Chart(pieCtx, {
-  type : "doughnut",
-  data: {
-    labels: ["Frontend", "Backend", "Data Science", "QA", "Deve Ops"],
-    datasets: [
-      {
-        data: [25,30,20,15,10],
-        backgroundColor: [
-          "rgba(13,110,253,0.8)",
-          "rgba(25,135,84,0.8)",
-          "rgba(225,193,7,0.8)",
-          "rgba(220,53,69,0.8)",
-          "rgba(102,16,242,0.8)",
-        ],
-      },
-    ],
-  },
-  options: {
-    plugins: { legend: { position: "bottom"} },
-  }
-});
-
-
-
-// DARK MODE TOGGLE
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleBtn = document.getElementById("themeToggle");
-
-  // Load saved theme
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-  }
-
-  // Toggle click
-  toggleBtn.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-
-    const isDark = document.body.classList.contains("dark-mode");
-
-    if (isDark) {
-      localStorage.setItem("theme", "dark");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    } else {
-      localStorage.setItem("theme", "light");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-    }
-  });
-});
- </script>
-
- <script src="levi.js"></script>
-</body>
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./levi.js"></script>
+  </body>
 </html>

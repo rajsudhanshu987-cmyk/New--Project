@@ -1,57 +1,128 @@
-document
-.getElementById("saveProjectBtn")
-.addEventListener("click", function () {
+ // Sidebar toggle for mobile
+      document
+        .getElementById("toggleSidebar")
+        .addEventListener("click", function () {
+          document.querySelector(".sidebar").classList.toggle("show");
+        });
 
-    const name = document.getElementById("projectName").value.trim();
-    const team = document.getElementById("projectTeam").value.trim();
-    const progress = document.getElementById("projectProgress").value;
-    const due = document.getElementById("projectDue").value;
-    const desc = document.getElementById("projectDescription").value.trim();
+      // Chart.js utilization chart
+      const ctx = document.getElementById("utilChart");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"],
+          datasets: [
+            {
+              label: "Overall utilization",
+              data: [62, 68, 71, 73, 76, 84],
+              tension: 0.3,
+              fill: true,
+              backgroundColor: "rgba(13,110,253,0.08)",
+              borderColor: "rgba(13,110,253,0.9)",
+              pointRadius: 4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: "top" } },
+          scales: { y: { beginAtZero: false, min: 40, max: 100 } },
+        },
+      });
 
-    if (!name || !team || progress === "" || !due) {
-        alert("Please fill all required fields!");
-        return;
-    }
+      // Reports Charts
+      const barCtx = document.getElementById("reportBar");
+      new Chart(barCtx, {
+        type: "bar",
+        data: {
+          labels: ["Payments", "Analytics", "Infra", "AI", "CRM"],
+          datasets: [
+            {
+              label: "Project Efficiency (%)",
+              data: [82, 76, 88, 91, 73],
+              backgroundColor: "rgba(13,110,253,0.6)",
+              borderRadius: 6,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, max: 100 },
+          },
+        },
+      });
 
-    const projectHTML = `
-    <div class="progress-bar ${progressColor}" style="width: ${progress}%"></div>
-<div class="col-md-6 col-lg-4">
-  <div class="card border-0 shadow-sm h-100">
-    <div class="card-body">
-      <h6 class="fw-bold">${name}</h6>
-      <p class="text-muted mb-2">
-        Team: <strong>${team}</strong>
-      </p>
-      <div class="progress mb-2" style="height: 10px">
-        <div class="progress-bar bg-primary" style="width: ${progress}%"></div>
-      </div>
-      <small class="text-muted">${progress}% complete</small>
-      <p class="mt-2 small text-muted">${desc}</p>
-    </div>
-    <div class="card-footer bg-white border-0 d-flex justify-content-between">
-      <span><i class="fa-regular fa-calendar"></i> Due: ${due}</span>
-      <a href="#" class="btn btn-sm btn-outline-primary">View</a>
-    </div>
-  </div>
-</div>
-`;
+      const pieCtx = document.getElementById("reportPie");
+      new Chart(pieCtx, {
+        type: "doughnut",
+        data: {
+          labels: ["Frontend", "Backend", "Data Science", "QA", "DevOps"],
+          datasets: [
+            {
+              data: [25, 30, 20, 15, 10],
+              backgroundColor: [
+                "rgba(13,110,253,0.8)",
+                "rgba(25,135,84,0.8)",
+                "rgba(255,193,7,0.8)",
+                "rgba(220,53,69,0.8)",
+                "rgba(102,16,242,0.8)",
+              ],
+            },
+          ],
+        },
+        options: {
+          plugins: { legend: { position: "bottom" } },
+        },
+      });
 
-    const container = document.querySelector("#projects .row.g-4");
-    if (container) {
-        container.insertAdjacentHTML("beforeend", projectHTML);
-    }
+      // Add Project Form Logic
+      document
+        .getElementById("saveProjectBtn")
+        .addEventListener("click", function () {
+          const name = document.getElementById("projectName").value.trim();
+          const team = document.getElementById("projectTeam").value.trim();
+          const progress = document.getElementById("projectProgress").value;
+          const due = document.getElementById("projectDue").value;
+          const desc = document
+            .getElementById("projectDescription")
+            .value.trim();
 
-    const modal = bootstrap.Modal.getInstance(
-        document.getElementById("addProjectModal")
-    );
+          if (!name || !team || !progress || !due) {
+            alert("Please fill all required fields!");
+            return;
+          }
 
-    if (modal) modal.hide();
+          const projectHTML = `
+            <div class="col-md-6 col-lg-4">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                  <h6 class="fw-bold">${name}</h6>
+                  <p class="text-muted mb-2">
+                    Team: <strong>${team}</strong>
+                  </p>
+                  <div class="progress mb-2" style="height: 10px">
+                    <div class="progress-bar bg-primary" style="width: ${progress}%"></div>
+                  </div>
+                  <small class="text-muted">${progress}% complete</small>
+                  <p class="mt-2 small text-muted">${desc}</p>
+                </div>
+                <div class="card-footer bg-white border-0 d-flex justify-content-between">
+                  <span><i class="fa-regular fa-calendar"></i> Due: ${due}</span>
+                  <a href="#" class="btn btn-sm btn-outline-primary">View</a>
+                </div>
+              </div>
+            </div>
+          `;
 
-    document.getElementById("addProjectsForm").reset();
-});
+          document
+            .querySelector("#projects .row.g-4")
+            .insertAdjacentHTML("beforeend", projectHTML);
 
-
-let progressColor = "bg-danger";
-if (progress >= 70) progressColor = "bg-success";
-else if (progress >= 40) progressColor = "bg-warning";
-
+          // Close modal and reset form
+          const modal = bootstrap.Modal.getInstance(
+            document.getElementById("addProjectModal")
+          );
+          modal.hide();
+          document.getElementById("addProjectForm").reset();
+        });
